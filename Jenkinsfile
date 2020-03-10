@@ -50,9 +50,11 @@ node
 		echo 'Static code'
 		dir('pytest') {
 			//sh 'virtualenv -p . python/pytest/bin/python3 venv'
+			workspace =pwd()
+			
 			sh 'pip3 install -U pytest'
 			sh 'pip3 install -r requirements.txt'
-			sh '. /home/wison/venv/bin/activate && pytest -s test/test_simple_example.py -v || true'
+			sh '. /home/wison/venv/bin/activate && pytest -s ${workspace}/wilson_pytest/TestCasess/Test_Demo.py -v || true'
 			//py.test "./python/pytest/test/test_simple_example.py" --junit-xml=test_results.xml || true
 			junit keepLongStdio: true, allowEmptyResults: true, testResults: 'test_results.xml'
 		}
