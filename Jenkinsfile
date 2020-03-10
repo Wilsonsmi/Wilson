@@ -48,7 +48,7 @@ node
 	stage('static code analysiseeee')
 	{
 		echo 'Static code'
-		dir('pytest') {
+		dir('wilson_pytest') {
 			//sh 'virtualenv -p . python/pytest/bin/python3 venv'
 			// checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c309e468-058f-4f01-b986-84e9270eb8bb', url: 'https://github.com/Wilsonsmi/Wilson']]])
 			// echo pwd()
