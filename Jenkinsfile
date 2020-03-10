@@ -48,14 +48,13 @@ node
 	stage('static code analysiseeee')
 	{
 		echo 'Static code'
-		dir('wilson_pytest') {
+		dir('pytest') {
 			//sh 'virtualenv -p . python/pytest/bin/python3 venv'
 			// checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c309e468-058f-4f01-b986-84e9270eb8bb', url: 'https://github.com/Wilsonsmi/Wilson']]])
 			// echo pwd()
-			// echo ${workspace}
 			sh 'pip3 install -U pytest'
 			sh 'pip3 install -r requirements.txt'
-			sh '. /home/wison/venv/bin/activate && pytest -s ${workspace}/TestCasess/Test_Demo.py -v || true'
+			sh '. /home/wison/venv/bin/activate && pytest -s ${workspace}/wilson_pytest/TestCasess/Test_Demo.py -v || true'
 			//py.test "./python/pytest/test/test_simple_example.py" --junit-xml=test_results.xml || true
 			junit keepLongStdio: true, allowEmptyResults: true, testResults: 'test_results.xml'
 		}
