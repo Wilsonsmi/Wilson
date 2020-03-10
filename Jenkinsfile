@@ -50,7 +50,9 @@ node
 		echo 'Static code'
 		dir('pytest') {
 			//sh 'virtualenv -p . python/pytest/bin/python3 venv'
+			checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c309e468-058f-4f01-b986-84e9270eb8bb', url: 'https://github.com/Wilsonsmi/PytestJenkins']]])
 			sh 'pip3 install -U pytest'
+			workspace =pwd()
 			sh 'pip3 install -r requirements.txt'
 			sh '. /home/wison/venv/bin/activate && pytest -s TestCasess/Test_Demo.py -v || true'
 			//py.test "./python/pytest/test/test_simple_example.py" --junit-xml=test_results.xml || true
